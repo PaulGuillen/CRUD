@@ -1,3 +1,5 @@
+let users = [];
+
 document.getElementById('addUserButton').addEventListener('click', function() {
     const firstName = document.getElementById('firstName').value.trim();
     const lastName = document.getElementById('lastName').value.trim();
@@ -7,6 +9,17 @@ document.getElementById('addUserButton').addEventListener('click', function() {
     const gender = document.getElementById('gender').value;
 
     if (firstName && lastName && phone && city && district && gender) {
+        const newUser = {
+            firstName,
+            lastName,
+            phone,
+            city,
+            district,
+            gender
+        };
+
+        users.push(newUser);
+
         const userItem = document.createElement('li');
         userItem.classList.add('user-item');
         userItem.innerHTML = `
@@ -24,22 +37,25 @@ document.getElementById('addUserButton').addEventListener('click', function() {
         document.getElementById('district').value = '';
         document.getElementById('gender').value = '';
 
-        console.log(`Usuario agregado: ${firstName} ${lastName}, Teléfono: ${phone}, Ciudad: ${city}, Distrito: ${district}, Género: ${gender}`);
+        console.log('Usuarios:', users);
 
         userItem.querySelector('.delete-btn').addEventListener('click', function() {
+            users = users.filter(user => user !== newUser);
             userItem.remove();
-            console.log(`Usuario eliminado: ${firstName} ${lastName}`);
+            console.log('Usuarios:', users);
         });
 
         userItem.querySelector('.edit-btn').addEventListener('click', function() {
-            document.getElementById('firstName').value = firstName;
-            document.getElementById('lastName').value = lastName;
-            document.getElementById('phone').value = phone;
-            document.getElementById('city').value = city;
-            document.getElementById('district').value = district;
-            document.getElementById('gender').value = gender;
+            document.getElementById('firstName').value = newUser.firstName;
+            document.getElementById('lastName').value = newUser.lastName;
+            document.getElementById('phone').value = newUser.phone;
+            document.getElementById('city').value = newUser.city;
+            document.getElementById('district').value = newUser.district;
+            document.getElementById('gender').value = newUser.gender;
+
+            users = users.filter(user => user !== newUser);
             userItem.remove();
-            console.log(`Usuario editando: ${firstName} ${lastName}`);
+            console.log('Usuarios:', users);
         });
     } else {
         console.log('Por favor, complete todos los campos.');
