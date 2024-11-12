@@ -1,6 +1,7 @@
 let users = [];
 
 document.getElementById('addUserButton').addEventListener('click', function() {
+    debugger;
     const firstName = document.getElementById('firstName').value.trim();
     const lastName = document.getElementById('lastName').value.trim();
     const phone = document.getElementById('phone').value.trim();
@@ -18,6 +19,10 @@ document.getElementById('addUserButton').addEventListener('click', function() {
             gender
         };
 
+
+
+
+        
         users.push(newUser);
 
         const userItem = document.createElement('li');
