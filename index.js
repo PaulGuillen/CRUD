@@ -19,10 +19,6 @@ document.getElementById('addUserButton').addEventListener('click', function() {
             gender
         };
 
-
-
-
-        
         users.push(newUser);
 
         const userItem = document.createElement('li');
