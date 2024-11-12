@@ -19,7 +19,8 @@ document.getElementById('addUserButton').addEventListener('click', function() {
             gender
         };
 
-
+// Estamos pendejos.
+      
         /**TEST PARA VER */
         users.push(newUser);
 
